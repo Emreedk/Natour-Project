@@ -1,0 +1,56 @@
+.header {
+  height: 85vh; /* viewport height ekran yüksekliğinin %95'i */
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url(../img/hero-small.jpg); /* arkaplan görsel'inin üstüne renk ile perdeleme*/
+  background-size: cover; /* resmin bulunduğu kapsayıcı alana göre görseli ayarlar örneğin alan 300 px resim 400 px ise resmi 300 px'e ayarlar*/
+  background-position: top; /* arkaplan resminin görünür kısmını üst kısmı olarak ayarlar sayfayı küçülttüğümüzde en üst her zaman görünür kalır.*/
+  position: relative; /* child classlar için referans oluşturma*/
+
+  @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    /* clip-path : polygon (x y, x y, x y , x y) kesip biçme işlemleri ile şekillendirme */
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    height: 95vh;
+  }
+
+  @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em),
+    only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
+    only screen and (min-width: 125em) {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)
+      ),
+      url(../img/hero.jpg);
+  }
+
+  @include respond(phone) {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  }
+
+  /*header altındaki logo-box'ı işaret ettik. & sembolu bulunduğu scope'u temsil eder. ".header__logo-box"*/
+  &__logo-box {
+    position: absolute; /* top ve left ile birlikte konumlandırma.*/
+    top: 4rem;
+    left: 4rem;
+  }
+
+  /*header altındaki logo'yu işaret ettik. & sembolu bulunduğu scope'u temsil eder. ".header__logo"*/
+  &__logo {
+    height: 3.5rem; /* yükseklik değeri */
+  }
+
+  /*header altındaki text-box'ı işaret ettik. & sembolu bulunduğu scope'u temsil eder. ".header__text-box"*/
+  &__text-box {
+    position: absolute;
+    top: 40%; /*parent'ı baz alarak alta kaydı*/
+    left: 50%;
+    transform: translate(-50%, -50%); /*sayfa boyutlandırmasına göre ayarlama*/
+    text-align: center;
+  }
+}

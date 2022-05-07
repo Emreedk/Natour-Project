@@ -1,0 +1,45 @@
+/* animasyon uygulamaları için keyframes kullanılır. her browser'ın kendi key'i var */
+@keyframes moveInLeft {
+  /*başlangıç noktası*/
+  0% {
+    opacity: 0; /*görünürlük*/
+    transform: translateX(-10rem); /*soldan sağa kaydırma*/
+    /*transform: rotate(180deg); /* 180 derece döndürmece */
+  }
+
+  80% {
+    transform: translateX(1rem);
+  }
+
+  /*bitiş noktası*/
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+
+  80% {
+    transform: translateX(-1rem);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}

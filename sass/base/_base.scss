@@ -1,0 +1,53 @@
+*,
+*::after,
+*::before {
+  /* * ile ifade ettiğimiz scope css dosyamızı implement ettiğimiz html sayfasındaki tüm elementlere etki eder. */
+  margin: 0; /* Dış Kenar boşlukları */
+  padding: 0; /* İçerdeki elementlerin kenar boşlukları */
+  box-sizing: inherit;
+}
+html {
+  /* font-size: 10px; burada spesifik pixel belirtmek doğru değil ve browserların default ayarı 16 pixel'dir. Bunun için biz 10px üzerinden çalışmak istiyorsan kendi 10 pixelimizi 16px değeri üzerinden ayarlıcaz. aşağıda.. */
+
+  //width>1200 && width<1800
+  font-size: 62.5%; /*(0,625 * 16px) = 10 px = 1 rem */
+
+  //width <1200?
+  @include respond(tab-land) {
+    // 1rem = 9px,   9/16 = 56.25%
+    font-size: 56.25%;
+  }
+
+  //width <900?
+  @include respond(tab-port) {
+    // 1 rem = 8px,   8/16 = 50%
+    font-size: 50%;
+  }
+
+  // //width<600?
+  // @include respond(phone) {
+  //   //1rem = 4.8 px,   4.8/16 = 30%
+  //   font-size: 30%;
+  // }
+
+  //width>1800
+  @include respond(big-desktop) {
+    // 1rem = 12px,   12/16 = 75%
+    font-size: 75%;
+  }
+}
+body {
+  box-sizing: border-box; /* border-box : elementin genişlik ve yüksekliğine border ve padding değerleri dahildir. */
+  padding: 3rem; /* kenar boşlukları */
+
+  @include respond(tab-port) {
+    // 1 rem = 8px,   8/16 = 50%
+
+    padding: 0; /* kenar boşlukları */
+  }
+}
+
+::selection {
+  background-color: $color-primary;
+  color: $color-white;
+}
